@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+// axios 통신 => 기본 URL 설정
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+
 /**
  * 로그인 
  * @returns
@@ -19,7 +22,8 @@ function Login() {
     formData.append('password', pwd);
 
     const response = await axios({
-        url: 'http://localhost:8080/loginCheck',
+        //url: 'http://localhost:8080/loginCheck',
+        url: '/loginCheck',
         method: 'POST',
         data: formData,
         // 중요
